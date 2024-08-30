@@ -14,9 +14,9 @@ import application.repository.CategoriaRepository;
 
 @Controller
 @RequestMapping("/categoria")
-public class CategoriaRepository {
+public class CategoriaController {
     @Autowired
-    private CategoriaRepository categoriaRepo;
+    private CategoriaController categoriaRepo;
 
     @RequestMapping("/list")
     public String list (Model ui){
@@ -34,7 +34,7 @@ public class CategoriaRepository {
         Categoria categoria = new Categoria ();
         categoria.setNome(nome);
 
-        cateriaRepo.save(categoria);
+        categoriaRepo.save(categoria);
 
         return "redirect:/categoria/list";
     }
@@ -51,13 +51,13 @@ public class CategoriaRepository {
             return "categoria/update";
         }
 
-        Return "redirect:/categoria/list"
+        return "redirect:/categoria/list";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(
         @RequestParam("id") long id,
-        @RequestParam("id") String nome, ) {
+        @RequestParam("nome") String nome) {
 
             Optional<Categoria> categoria = categoriaRepo.findById(id);
 
@@ -88,7 +88,7 @@ public class CategoriaRepository {
 
         @RequestMapping(value = "/delete", method = RequestMethod.POST)
         public String delete(@RequestParam("id") long id) {
-            categoriaRepo.deleteById(id);
+            categoriaRepo.delete(id);
 
             return "redirect:/categoria/list";
         }

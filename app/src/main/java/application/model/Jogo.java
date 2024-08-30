@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "jogos")
-public class Plataforma {
+public class Jogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -50,19 +50,16 @@ public class Plataforma {
         this.titulo = titulo;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
+}
+public Categoria getCategoria() {
+    return categoria;
+}
 
     public Set<Plataforma> getPlataformas() {
         return plataformas;
     }
-    
-    public void setPlataformas(Set<Plataforma> Plataformas) {
-        this.Plataformas = plataformas;
-    }
+
+  
 }

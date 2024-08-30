@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "plataformas")
@@ -43,7 +44,7 @@ public class Plataforma {
         return jogos;
     }
     
-    public void setJogos(Set<jogo> jogos) {
+    public void setJogos(Set<Jogo> jogos) {
         this.jogos = jogos;
     }
 }

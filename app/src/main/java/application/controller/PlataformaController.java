@@ -14,17 +14,17 @@ public class PlataformaController {
     private PlataformaRepository plataformaRepo;
     
     @RequestMapping("/list")
-    public string list (Model ui) {
+    public String list (Model ui) {
         ui.addAttribute("plataformas", plataformaRepo.findAll()); return "plataforma/list";
     }
 
     @RequestMapping("/insert")
-    public string insert() {
+    public String insert() {
         return "plataforma/insert";
 }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST) 
-    public string insert (@RequestParam("nome") String nome) { 
+    public String insert (@RequestParam("nome") String nome) { 
         Plataforma plataforma = new Plataforma(); 
         plataforma.setNome (nome);  
 
@@ -35,7 +35,7 @@ public class PlataformaController {
     }
 
     @RequestMapping("/update")
-    public string update(
+    public String update(
         @RequestParam("id") long id,
         Model ui) {
 
@@ -50,7 +50,7 @@ public class PlataformaController {
 }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST) 
-    public string update(
+    public String update(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome) {
 
@@ -66,7 +66,7 @@ public class PlataformaController {
     }
 
     @RequestMapping("/delete") 
-    public string delete(
+    public String delete(
         @RequestParam("id") long id,
         Model ui) {
 
@@ -81,7 +81,7 @@ public class PlataformaController {
         }
 
     @RequestMapping(value = "/delete", method = RequestMethod. POST) 
-    public string delete(@RequestParam("id") long id) {
+    public String delete(@RequestParam("id") long id) {
     plataformaRepo.deleteById(id);
 
     return "redirect:/plataforma/list";

@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
-public class Categorias {
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -44,7 +44,7 @@ public class Categorias {
         return jogos;
     }
 
-    public void setJogos(Set<jogo> jogos) {
+    public void setJogos(Set<Jogo> jogos) {
         this.jogos = jogos;
     }
 }

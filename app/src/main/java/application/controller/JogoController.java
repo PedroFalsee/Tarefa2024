@@ -25,21 +25,21 @@ public class JogoController {
     private PlataformaRepository plataformaRepo;
 
     @RequestMapping("/list")
-    public string list (Model ui) {
+    public String list (Model ui) {
         ui.addAttribute("jogos", jogoRepo.findAll()); 
         return "jogo/list";
     }
 
         @RequestMapping("/insert")
-    public string insert (Model ui) {
+    public String insert (Model ui) {
         ui.addAttribute("categorias", categoriaRepo.findAll()); 
         ui.addAttribute("plataformas", plataformaRepo.findAll());
         return "jogo/insert";
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST) 
-    public string insert(
-        @RequestParam("titulo") string titulo,
+    public String insert(
+        @RequestParam("titulo") String titulo,
         @RequestParam("categoria") long idcategoria, 
         @RequestParam("plataformas") long[] idsPlataformas) {
 
@@ -57,7 +57,7 @@ public class JogoController {
 }
 
     @RequestMapping("/update") 
-    public string update( 
+    public String update( 
         @RequestParam("id") long id, 
         Model ui) {
         
@@ -72,7 +72,7 @@ public class JogoController {
     }
 
         @RequestMapping(value="/update", method = RequestMethod.POST)
-        public string update(
+        public String update(
             @RequestParam("id") long id,
             @RequestParam("titulo") String titulo,
             @RequestParam("categoria") long idcategoria,
@@ -97,7 +97,7 @@ public class JogoController {
         }
 
     @RequestMapping("/delete")
-    public string delete(
+    public String delete(
     @RequestParam("id") long id,
     Model ui) {
 
@@ -112,7 +112,7 @@ public class JogoController {
 }
     
     @RequestMapping(value="/delete", method = RequestMethod.POST)
-    public string delete(@RequestParam("id") long id) {
+    public String delete(@RequestParam("id") long id) {
     jogoRepo.deleteById(id);
     
     return "redirect:/jogo/list";
