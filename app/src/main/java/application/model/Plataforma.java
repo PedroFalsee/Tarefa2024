@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "plataformas")
@@ -21,7 +20,7 @@ public class Plataforma {
     @Column(unique = true, nullable = false)
     private String nome;
 
-    @OneToMany(mappeBy = "plataformas")
+    @ManyToMany(mappedBy = "plataformas")
     private Set<Jogo> jogos = new HashSet<>();
 
     public long geiId() {

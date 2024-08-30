@@ -16,7 +16,7 @@ import application.repository.CategoriaRepository;
 @RequestMapping("/categoria")
 public class CategoriaController {
     @Autowired
-    private CategoriaController categoriaRepo;
+    private CategoriaRepository categoriaRepo;
 
     @RequestMapping("/list")
     public String list (Model ui){
@@ -29,7 +29,7 @@ public class CategoriaController {
         return "categoria/insert";
     }
 
-    @RequestMapping(value = "/insert", method = RequestMapping.POST)
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String insert(@RequestParam("nome") String nome) {
         Categoria categoria = new Categoria ();
         categoria.setNome(nome);
@@ -88,7 +88,7 @@ public class CategoriaController {
 
         @RequestMapping(value = "/delete", method = RequestMethod.POST)
         public String delete(@RequestParam("id") long id) {
-            categoriaRepo.delete(id);
+            categoriaRepo.deleteById(id);
 
             return "redirect:/categoria/list";
         }

@@ -1,6 +1,7 @@
 
 package application.controller;
-import java.util.HashSet; import java.util.Optional;
+import java.util.HashSet; 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired; 
@@ -20,8 +21,10 @@ import application.repository.PlataformaRepository;
 @RequestMapping("/jogo")
 public class JogoController {
     @Autowired
-    private JogoRepository jogoRepo; @Autowired
-    private CategoriaRepository categoriaRepo; @Autowired
+    private JogoRepository jogoRepo; 
+    @Autowired
+    private CategoriaRepository categoriaRepo; 
+    @Autowired
     private PlataformaRepository plataformaRepo;
 
     @RequestMapping("/list")
@@ -40,7 +43,7 @@ public class JogoController {
     @RequestMapping(value = "/insert", method = RequestMethod.POST) 
     public String insert(
         @RequestParam("titulo") String titulo,
-        @RequestParam("categoria") long idcategoria, 
+        @RequestParam("categoria") long idCategoria, 
         @RequestParam("plataformas") long[] idsPlataformas) {
 
         Jogo jogo = new Jogo(); 
@@ -75,7 +78,7 @@ public class JogoController {
         public String update(
             @RequestParam("id") long id,
             @RequestParam("titulo") String titulo,
-            @RequestParam("categoria") long idcategoria,
+            @RequestParam("categoria") long idCategoria,
             @RequestParam("plataformas") long[] idsPlataformas) {
 
             Optional<Jogo> jogo = jogoRepo.findById(id);
