@@ -23,7 +23,7 @@ public class Plataforma {
     @ManyToMany(mappedBy = "plataformas")
     private Set<Jogo> jogos = new HashSet<>();
 
-    public long geiId() {
+    public long getId() {
         return id;
     }
 
